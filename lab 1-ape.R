@@ -1,0 +1,10 @@
+#This code was useful to run the Shimodaira-Hasegawa test for two topologies using the package ape.
+library(ape)
+library(phangorn)
+library(phylotools)
+matriz <- read.phyDat("yeti.phy", format="phylip", type = "DNA")
+arbolparsimony <- read.tree('parsimony.tre')
+arbolnepal <- read.tree('nepal.tre')
+arbolparsimony <- rtree(13,tip.label = arbolparsimony$tip.label)
+arbolnepal <- rtree(13,tip.label = arbolnepal$tip.label)
+SH.test(arbolparsimony, arbolnepal,x = , matriz, model = DNAmodel(HKY85), B = 100)
